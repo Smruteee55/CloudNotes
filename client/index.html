@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudNotes - Baby Pink Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="auth-overlay" style="position:fixed; inset:0; background:rgba(67, 20, 7, 0.8); z-index:9999; display:flex; justify-content:center; align-items:center;">
+        <div style="background:white; padding:40px; border-radius:20px; text-align:center; width:350px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <h2 style="color: #FB7185; margin-bottom: 10px;">☁️ CloudNotes</h2>
+            <p style="color: #9F1239; margin-bottom: 25px;">Sync your thoughts beautifully.</p>
+            
+            <input type="text" id="reg-username" placeholder="Username" 
+                   style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #FFE4E6; border-radius:8px; outline:none;">
+            
+            <input type="password" id="reg-password" placeholder="Password" 
+                   style="width:100%; padding:12px; margin-bottom:20px; border:1px solid #FFE4E6; border-radius:8px; outline:none;">
+            
+            <button onclick="handleSignup()" class="btn-primary" style="width:100%;">Create Account</button>
+        </div>
+    </div>
+
+    <div style="display: flex;">
+        
+        <aside class="sidebar">
+            <div class="logo">CloudNotes</div>
+            <nav style="display: flex; flex-direction: column; gap: 5px;">
+                <div class="nav-item"><i class="fas fa-home"></i> Dashboard</div>
+                <div class="nav-item" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</div>
+            </nav>
+            
+            <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; border-top: 1px solid #FFE4E6; padding-top: 20px;">
+                <div id="avatar-initial" style="background: #FB7185; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">S</div>
+                <span id="display-username" style="font-weight: 600; font-size: 0.9rem;">Guest</span>
+            </div>
+        </aside>
+
+        <main style="margin-left: 260px; flex: 1; padding: 40px; max-width: 1200px;">
+            
+            <header style="margin-bottom: 30px;">
+                <div style="background: white; border: 1px solid #FFE4E6; border-radius: 12px; padding: 10px 20px; display: flex; align-items: center; gap: 10px; max-width: 400px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+                    <i class="fas fa-search" style="color: #FB7185;"></i>
+                    <input type="text" id="search-input" placeholder="Search your notes..." 
+                           style="border: none; outline: none; width: 100%; font-family: inherit;">
+                </div>
+            </header>
+
+            <section id="note-editor">
+                <input type="text" id="note-title" placeholder="Note Title...">
+                <textarea id="note-content" placeholder="Start typing your important notes here..." rows="4"></textarea>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #FFE4E6; padding-top: 15px; margin-top: 10px;">
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer; color: #9F1239;">
+                        <input type="checkbox" id="is-important"> <span>Mark as Important ✨</span>
+                    </label>
+                    <button onclick="saveNote()" class="btn-primary">Sync to Azure</button>
+                </div>
+            </section>
+
+            <h2 style="font-size: 1.2rem; color: #FB7185; margin-bottom: 20px;">Your Workspace</h2>
+            <div id="notes-list" class="notes-grid">
+                </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

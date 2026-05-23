@@ -1,0 +1,9 @@
+# Block sensitive backend configs and dependencies
+api/local.settings.json
+api/node_modules/
+node_modules/
+
+# Block environment files and local IDE settings
+.env
+.venv/
+.vscode/
